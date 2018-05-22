@@ -7,6 +7,7 @@ import { Observable } from "rxjs/Observable";
     selector: 'app-user-list',
     templateUrl: './user-list.component.html'
 })
+
 export class UserListComponent implements OnInit {
 
 	public usersCount = '54';
@@ -25,9 +26,4 @@ export class UserListComponent implements OnInit {
 
 	console.log(userCount);
 	}
-
-  	countChange(event) {
-    	this.usersCount = event;
-    	this.loadUsers(this.usersCount);
-  	}
 }

@@ -4,31 +4,35 @@ import { User } from '../../entity/user';
 import { Pagination } from '../../entity/pagination';
 
 @Component({
-  selector: 'app-pagination',
-  templateUrl: './pagination.component.html'
+	selector: 'app-pagination',
+	templateUrl: './pagination.component.html'
 })
+
 export class PaginationComponent implements OnInit {
 
-  private pagination: Pagination;
-  private usersPerPage: User[];
+	private pagination: Pagination;
+	private usersPerPage: User[];
 
-  constructor(private paginationService: PaginationService) { }
+	constructor (private paginationService: PaginationService) { }
 
-  @Input() allUsers: User[];
+	@Input() allUsers: User[];
 
-  ngOnInit() {
-    this.setPage(1);
-  }
+	ngOnInit() {
+		this.setPage(1);
+	}
+	
+	/**
+     * Устанавливает текущую страницу
+     * @param {number} page
+     */
+	setPage(page: number) {
+	// получаем объект паджинации
+	this.pagination = this.paginationService.getPagination(this.allUsers.length, page);
 
-  setPage(page: number) {
+	// получаем индексы элементов для выбранной страницы
+	const pageIndexes = this.paginationService.getIndexesPerPage(this.pagination);
 
-    // получаем объект паджинации
-    this.pagination = this.paginationService.getPagination(this.allUsers.length, page);
-
-    // получаем индексы элементов для выбранной страницы
-    const pageIndexes = this.paginationService.getIndexesPerPage(this.pagination);
-
-    // выделяем элементы для выбранной страницы
-    this.usersPerPage = this.allUsers.slice(pageIndexes.startIndex, pageIndexes.endIndex + 1);
-    }
+	// выделяем элементы для выбранной страницы
+	this.usersPerPage = this.allUsers.slice(pageIndexes.startIndex, pageIndexes.endIndex + 1);
+	}
 }

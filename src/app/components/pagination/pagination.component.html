@@ -1,25 +1,25 @@
-	<table *ngIf="usersPerPage" class="table">
-		<thead>
-			<th>ID</th>
-			<th>First name</th>
-			<th>Last name</th>
-			<th>Email</th>
-    		<th>Phone</th>
-    		<th>Description</th>
-		</thead>
-		<tr *ngFor = "let user of usersPerPage">
-			<td> {{user.id}} </td>
-			<td> {{user.firstName}} </td>
-			<td> {{user.lastName}} </td>
-			<td> {{user.email}} </td>
-			<td> {{user.phone}} </td>
-			<td> {{user.description}} </td>
-		</tr>
-	</table>		
-	<ul *ngIf="pagination.pages && pagination.pages.length" class="pagination justify-content-center">
-    		<li *ngFor="let page of pagination.pages" class = "page-item" [ngClass]="{active:pagination.currentPage === page}">
-        		<a class="page-link" (click)="setPage(page)">
-        			{{page}}
-        		</a>
-    		</li>
-	</ul>
+<table *ngIf="usersPerPage" class="table">
+	<thead>
+		<th>ID</th>
+		<th>First name</th>
+		<th>Last name</th>
+		<th>Email</th>
+    	<th>Phone</th>
+    	<th>Description</th>
+	</thead>
+	<tr *ngFor = "let user of usersPerPage">
+		<td> {{user.id}} </td>
+		<td> {{user.firstName}} </td>
+		<td> {{user.lastName}} </td>
+		<td> {{user.email}} </td>
+		<td> {{user.phone}} </td>
+		<td> {{user.description}} </td>
+	</tr>
+</table>		
+<ul *ngIf="pagination.pages && pagination.pages.length" class="pagination justify-content-center">
+    <li *ngFor="let page of pagination.pages" class = "page-item" [ngClass]="{active:pagination.currentPage === page}">
+        <a class="page-link" (click)="setPage(page)">
+        	{{page}}
+        </a>
+    </li>
+</ul>

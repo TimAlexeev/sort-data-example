@@ -1,6 +1,5 @@
 // Сущность "Паджинация"
 export class Pagination {
-
 	constructor (
 		public totalItems: number,
     	public currentPage: number,
@@ -8,5 +7,6 @@ export class Pagination {
     	public totalPages: number,
     	public startPage: number,
     	public endPage: number,
-    	public pages: Number[]) {}
+    	public pages: Number[]
+    ) {}
 }

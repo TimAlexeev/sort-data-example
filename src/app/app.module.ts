@@ -8,8 +8,6 @@ import { PaginationComponent } from './components/pagination/pagination.componen
 import { UserService } from './service/user.service';
 import { PaginationService } from './service/pagination.service';
 import { AppRoutingModule } from './app-routing.module';
-import { FormsModule } from '@angular/forms';
-
 
 @NgModule({
   declarations: [
@@ -20,8 +18,7 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule,
-    FormsModule
+    AppRoutingModule
   ],
   providers: [UserService, PaginationService],
   bootstrap: [AppComponent]
