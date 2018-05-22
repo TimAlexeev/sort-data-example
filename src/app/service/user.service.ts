@@ -7,12 +7,13 @@ import { Observable } from 'rxjs';
 
 export class UserService {
 
-	private dataUrl: string = 'http://www.filltext.com/?rows=32&id={number|1000}&firstName={firstName}&lastName={lastName}&email={email}&phone={phone|(xxx)xxx-xx-xx}&description={lorem|32}';
-
 	constructor(private http: HttpClient) {}
 
-	public getData(): Observable<User[]> {
-		return this.http.get<User[]>(this.dataUrl);
+	public getData(count: string): Observable<User[]> {
+
+		const dataUrl = `http://www.filltext.com/?rows=${count}&id={number|1000}&firstName={firstName}&lastName={lastName}&email={email}&phone={phone|(xxx)xxx-xx-xx}&description={lorem|32}`;
+
+		return this.http.get<User[]>(dataUrl);
 	}
 
 }

@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, Input } from '@angular/core';
 import { User } from '../../entity/user';
 import { UserService } from '../../service/user.service';
 import { Observable } from "rxjs/Observable";
-import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-user-list',
@@ -10,22 +9,25 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class UserListComponent implements OnInit {
 
-	private users: User[];
-	count: number = 0;
-  	offset: number = 0;
-  	limit: number = 20;
+	public usersCount = '54';
+	private allUsers: User[];
 
-	constructor (private userService: UserService, private router: Router, private route: ActivatedRoute) {}
+	constructor (private userService: UserService) {}
 
 	ngOnInit() {
-		this.userService.getData().subscribe(users => {
-			this.users = users;
-			this.count = users.length;
-		});
+		this.loadUsers(this.usersCount);
 	}
 
-	onPageChange(offset) {
-    	this.offset = offset;
-    	this.router.navigate(['/user-list', (offset / this.limit) + 1]);
-  }
+	loadUsers(userCount: string) {
+		this.userService.getData(userCount).subscribe(users => {
+			this.allUsers = users;
+		});
+
+	console.log(userCount);
+	}
+
+  	countChange(event) {
+    	this.usersCount = event;
+    	this.loadUsers(this.usersCount);
+  	}
 }

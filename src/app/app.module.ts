@@ -6,7 +6,9 @@ import { AppComponent } from './app.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { UserService } from './service/user.service';
+import { PaginationService } from './service/pagination.service';
 import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -19,8 +21,9 @@ import { AppRoutingModule } from './app-routing.module';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    FormsModule
   ],
-  providers: [UserService],
+  providers: [UserService, PaginationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

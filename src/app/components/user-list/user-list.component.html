@@ -1,21 +1,4 @@
-<div>
-	<table class="table">
-		<thead>
-			<th>ID</th>
-			<th>First name</th>
-			<th>Last name</th>
-			<th>Email</th>
-    		<th>Phone</th>
-    		<th>Description</th>
-		</thead>
-		<tr *ngFor = "let user of users">
-			<td> {{user.id}} </td>
-			<td> {{user.firstName}} </td>
-			<td> {{user.lastName}} </td>
-			<td> {{user.email}} </td>
-			<td> {{user.phone}} </td>
-			<td> {{user.description}} </td>
-		</tr>
-	</table>
-	<app-pagination [offset]="offset" [limit]="limit" [size]="count" (pageChange)="onPageChange($event)"></app-pagination>
-</div>
+	<input type="text" (blur)="loadUsers($event.target.value)"> пользователей
+	<div *ngIf = "allUsers" class="text-center">
+		<app-pagination [allUsers] = "allUsers"></app-pagination>
+	</div>
